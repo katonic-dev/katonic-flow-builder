@@ -1,5 +1,5 @@
 {
-  "name": "react-flow-builder",
+  "name": "katonic-flow-builder",
   "version": "2.8.0",
   "keywords": [
     "flow",
@@ -23,11 +23,11 @@
   "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",
   "bugs": {
-    "url": "https://github.com/bytedance/flow-builder/issues"
+    "url": "https://github.com/katonic-dev/katonic-flow-builder/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bytedance/flow-builder"
+    "url": "https://github.com/katonic-dev/katonic-flow-builder"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
