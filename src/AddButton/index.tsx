@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ActionButton from '../ActionButton';
 import { SplitLine } from '../Lines';
 import DropButton from '../DropButton';
@@ -16,6 +16,7 @@ import AddIcon from '../icons/add-button.svg';
 import AddNormalIcon from '../icons/add-normal.svg';
 import AddBranchIcon from '../icons/add-branch.svg';
 import './index.less';
+import MyDrawer from '@/Custom';
 
 interface IProps {
   inLoop?: boolean;
@@ -23,6 +24,7 @@ interface IProps {
 
 const AddNodeButton: React.FC<IProps> = (props) => {
   const { inLoop } = props;
+  const [modal, setModal] = useState(false);
 
   const {
     registerNodes,
@@ -108,22 +110,17 @@ const AddNodeButton: React.FC<IProps> = (props) => {
         droppable ? (
           <DropComponent onDrop={handleDrop} />
         ) : PopoverComponent ? (
-          <PopoverComponent
-            visible={visible}
-            onVisibleChange={setVisible}
-            overlayClassName="flow-builder-addable-nodes"
-            placement="rightTop"
-            trigger="click"
-            content={addableOptions}
-            getPopupContainer={(triggerNode: any) => triggerNode as HTMLElement}
-          >
-            <div className="flow-builder-add-btn">
-              Harshit
-              <ActionButton icon={AddIcon} />
-            </div>
-          </PopoverComponent>
+          <div className="flow-builder-add-btn">
+            <ActionButton icon={AddIcon} setModal={setModal} modal={modal} />
+          </div>
         ) : null
       ) : null}
+
+      <MyDrawer
+        visible={modal}
+        setVisible={setModal}
+        content={addableOptions}
+      />
 
       <SplitLine />
     </>
