@@ -1,6 +1,6 @@
 {
-  "name": "katonic-flow-builder",
-  "version": "2.8.0",
+  "name": "@katonic/flow-builder",
+  "version": "0.1.0",
   "keywords": [
     "flow",
     "builder",
