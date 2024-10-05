@@ -44,6 +44,7 @@ const BranchNode: React.FC<IProps> = (props) => {
   const { renderConditionNode } = props;
 
   const [dragging, setDragging] = useState(false);
+  const [modal, setModal] = useState(false);
 
   const {
     nodes,
@@ -174,7 +175,12 @@ const BranchNode: React.FC<IProps> = (props) => {
               <DropComponent onDrop={handleDrop} />
             ) : (
               registerNode?.addConditionIcon || (
-                <ActionButton size={20} icon={AddConditionIcon} />
+                <ActionButton
+                  size={20}
+                  icon={AddConditionIcon}
+                  modal={modal}
+                  setModal={setModal}
+                />
               )
             )}
           </div>

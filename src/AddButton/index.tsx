@@ -16,7 +16,7 @@ import AddIcon from '../icons/add-button.svg';
 import AddNormalIcon from '../icons/add-normal.svg';
 import AddBranchIcon from '../icons/add-branch.svg';
 import './index.less';
-import MyDrawer from '@/Custom';
+import DrawerComponent from '@/Custom';
 
 interface IProps {
   inLoop?: boolean;
@@ -90,12 +90,16 @@ const AddNodeButton: React.FC<IProps> = (props) => {
           <div
             className="flow-builder-addable-node-item"
             key={item.type}
-            onClick={() => handleAddNode(item.type)}
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent the click from bubbling up to the overlay
+              handleAddNode(item.type);
+            }}
           >
             <span className="flow-builder-addable-node-icon">
-              {registerNode?.addIcon || <img src={defaultIcon} />}
+              {registerNode?.addIcon || (
+                <img src={defaultIcon} alt={item.name} />
+              )}
             </span>
-
             <span>{item.name}</span>
           </div>
         );
@@ -116,9 +120,10 @@ const AddNodeButton: React.FC<IProps> = (props) => {
         ) : null
       ) : null}
 
-      <MyDrawer
+      <DrawerComponent
         visible={modal}
-        setVisible={setModal}
+        onClose={() => setModal(false)}
+        title="Addable Nodes"
         content={addableOptions}
       />
 

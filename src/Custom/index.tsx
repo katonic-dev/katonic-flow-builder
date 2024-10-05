@@ -1,41 +1,38 @@
+// DrawerComponent.tsx
 import React from 'react';
-import { Drawer, Button, Space } from 'antd';
 import './index.less';
 
-interface MyDrawerProps {
+interface DrawerComponentProps {
   visible: boolean;
-  setVisible: (visible: boolean) => void;
+  onClose: () => void;
+  title: string;
   content: React.ReactNode;
 }
 
-const MyDrawer: React.FC<MyDrawerProps> = ({
+const DrawerComponent: React.FC<DrawerComponentProps> = ({
   visible,
-  setVisible,
+  onClose,
+  title,
   content,
 }) => {
-  const onClose = () => {
-    setVisible(false);
-  };
-
   return (
-    <Drawer
-      title="Addable Nodes"
-      placement="right"
-      width={500}
-      onClose={onClose}
-      visible={visible}
-      extra={
-        <Space>
-          <Button onClick={onClose}>Cancel</Button>
-          <Button type="primary" onClick={onClose}>
-            OK
-          </Button>
-        </Space>
-      }
-    >
-      <div className="custom-node-container">{content}</div>
-    </Drawer>
+    <>
+      {visible && <div className="drawer-overlay" onClick={onClose} />}
+      <div className={`drawer ${visible ? 'open' : ''}`}>
+        <div className="drawer-content">
+          <div className="drawer-header">
+            <h3>{title}</h3>
+            <button className="close-button" onClick={onClose}>
+              &times;
+            </button>
+          </div>
+          <div className="drawer-body">
+            {content} {/* Ensure the content is rendered directly */}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
-export default MyDrawer;
+export default DrawerComponent;
