@@ -4,7 +4,7 @@ import FlowBuilder, {
   IRegisterNode,
   INode,
   IAddableComponent,
-} from 'react-flow-builder';
+} from '@katonic/flow-builder';
 import {
   DrawerComponent,
   PopconfirmComponent,

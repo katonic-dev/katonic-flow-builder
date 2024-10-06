@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BuilderContext, useDrawer } from 'react-flow-builder';
+import { BuilderContext, useDrawer } from '@katonic/flow-builder';
 import { Form, Button, Input } from 'antd';
 
 const ConfigForm: React.FC = () => {

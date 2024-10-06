@@ -65,6 +65,7 @@
     "yorkie": "^2.0.0"
   },
   "dependencies": {
+    "@katonic/flow-builder": "^0.1.1",
     "lodash.clonedeep": "^4.5.0",
     "lodash.get": "^4.4.2",
     "react-beautiful-dnd": "^13.1.1",

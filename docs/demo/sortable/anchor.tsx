@@ -3,7 +3,7 @@ import FlowBuilder, {
   NodeContext,
   INode,
   IRegisterNode,
-} from 'react-flow-builder';
+} from '@katonic/flow-builder';
 import SortIcon from './sort.svg';
 import {
   DrawerComponent,

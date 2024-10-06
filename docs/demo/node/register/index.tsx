@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FlowBuilder, { INode, IRegisterNode } from 'react-flow-builder';
+import FlowBuilder, { INode, IRegisterNode } from '@katonic/flow-builder';
 import {
   DrawerComponent,
   PopconfirmComponent,
