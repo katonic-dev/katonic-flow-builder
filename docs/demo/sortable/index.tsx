@@ -48,6 +48,8 @@ const registerNodes: IRegisterNode[] = [
   {
     type: 'node',
     name: '普通节点',
+    addIcon: 'https://cdn.activepieces.com/pieces/activecampaign.png',
+    addDescription: 'Testing re baba',
     displayComponent: NodeDisplay,
   },
   {
@@ -83,6 +85,8 @@ const defaultNodes = [
             id: 'node-f227cd08-a503-48b7-babf-b4047fc9dfa5',
             type: 'node',
             name: '普通节点',
+            addIcon: 'https://cdn.activepieces.com/pieces/activecampaign.png',
+            addDescription: 'Testing re baba',
             path: ['1', 'children', '0', 'children', '0'],
           },
         ],
@@ -102,6 +106,8 @@ const defaultNodes = [
     id: 'node-972401ca-c4db-4268-8780-5607876d8372',
     type: 'node',
     name: '普通节点',
+    addIcon: 'https://cdn.activepieces.com/pieces/activecampaign.png',
+    addDescription: 'Testing re baba',
     path: ['2'],
   },
   {

@@ -45,6 +45,12 @@ const AddNodeButton: React.FC<IProps> = (props) => {
 
   const [visible, setVisible] = useState(false);
 
+  const [search, setSearch] = useState<string>('');
+
+  useEffect(() => {
+    console.log(search);
+  }, [search]);
+
   const registerNode = getRegisterNode(registerNodes, node.type);
   const AddableComponent = registerNode?.addableComponent;
   const addableNodeTypes = registerNode?.addableNodeTypes;
@@ -81,29 +87,48 @@ const AddNodeButton: React.FC<IProps> = (props) => {
     <AddableComponent node={node} nodes={nodes} add={handleAddNode} />
   ) : (
     <>
-      {options.map((item) => {
-        const registerNode = getRegisterNode(registerNodes, item.type);
-        const defaultIcon = getIsBranchNode(registerNodes, item.type)
-          ? AddBranchIcon
-          : AddNormalIcon;
-        return (
-          <div
-            className="flow-builder-addable-node-item"
-            key={item.type}
-            onClick={(e) => {
-              e.stopPropagation(); // Prevent the click from bubbling up to the overlay
-              handleAddNode(item.type);
-            }}
-          >
-            <span className="flow-builder-addable-node-icon">
-              {registerNode?.addIcon || (
-                <img src={defaultIcon} alt={item.name} />
-              )}
-            </span>
-            <span>{item.name}</span>
-          </div>
-        );
-      })}
+      {options
+        .filter((item) =>
+          item.name.toLowerCase().includes(search.toLowerCase()),
+        )
+        .map((item) => {
+          const registerNode = getRegisterNode(registerNodes, item.type);
+          const defaultIcon = getIsBranchNode(registerNodes, item.type)
+            ? AddBranchIcon
+            : AddNormalIcon;
+
+          return (
+            <div
+              className="flow-builder-addable-node-item"
+              key={item.type}
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent the click from bubbling up to the overlay
+                handleAddNode(item.type);
+              }}
+            >
+              {/* {console.log(item)} */}
+              <div className="flow-builder-addable-node-icon">
+                {registerNode?.addIcon ? (
+                  <img
+                    className="node-image-container"
+                    src={registerNode.addIcon}
+                    alt={item.name}
+                  />
+                ) : (
+                  <img
+                    className="node-image-container"
+                    src={defaultIcon}
+                    alt={item.name}
+                  />
+                )}
+              </div>
+              <div className="node-info">
+                <span className="node-title">{item.name}</span>
+                <span className="node-desc">{item.addDescription || ''}</span>
+              </div>
+            </div>
+          );
+        })}
     </>
   );
 
@@ -123,6 +148,7 @@ const AddNodeButton: React.FC<IProps> = (props) => {
       <DrawerComponent
         visible={modal}
         onClose={() => setModal(false)}
+        setSearch={setSearch}
         title="Addable Nodes"
         content={addableOptions}
       />

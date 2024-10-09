@@ -63,6 +63,8 @@ const registerNodes: IRegisterNode[] = [
   {
     type: 'node',
     name: '普通节点',
+    addIcon: 'https://cdn.activepieces.com/pieces/activecampaign.png',
+    addDescription: 'Testing re baba',
     displayComponent: NodeDisplay,
   },
   {

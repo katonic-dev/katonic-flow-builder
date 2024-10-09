@@ -44,7 +44,8 @@ export interface IRegisterNode {
   name: string;
   conditionNodeType?: string;
   conditionMaxNum?: number;
-  addIcon?: React.ReactNode;
+  addIcon?: string;
+  addDescription?: string;
   addConditionIcon?: React.ReactNode;
   displayComponent?: React.FC<IDisplayComponent>;
   configComponent?:
