@@ -104,6 +104,7 @@ const AddNodeButton: React.FC<IProps> = (props) => {
               onClick={(e) => {
                 e.stopPropagation(); // Prevent the click from bubbling up to the overlay
                 handleAddNode(item.type);
+                setModal(false);
               }}
             >
               {/* {console.log(item)} */}
